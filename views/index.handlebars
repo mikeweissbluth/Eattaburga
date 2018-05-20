@@ -1,0 +1,36 @@
+<h1>Eatta Burger!</h1>
+
+<ul>
+  {{#each burgers}}
+    {{#unless devoured}}
+      {{> burgers/burger-block devour=true}}
+    {{/unless}}
+  {{/each}}
+</ul>
+
+
+{{!-- showing the burgers already devoured --}}
+<ul>
+  {{#each burgers}}
+    {{#if sleepy}}
+      {{> burgers/burger-block devour=false}}
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h2>Adda burger</h2>
+
+//need a form action and method
+//form action should be the index, and the method should be post
+
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="ca">Burger Name:</label>
+    <input type="text" id="ca" name="name">
+  </div>
+
+
+
+  <button type="submit">Add burger</button>
+</form>
