@@ -21,5 +21,11 @@ connection.connect(function(err) {
   console.log("connected as id " + connection.threadId);
 });
 
+connection.query('CREATE TABLE burgers', function(err, rows, fields) {
+  if (err) throw err;
+
+  console.log('The solution is: ', rows[0]);
+});
+
 // Export connection for our ORM to use.
 module.exports = connection;
