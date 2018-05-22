@@ -1,7 +1,9 @@
 <li>
 	{{name}}
 
+	{{#if devour}}
 	<button class="change-devour" data-id="{{id}}" data-newdevour="{{devour}}">
-		{{#if devour}}Devour!{{/if}}
+		devour
 	</button>
+	{{/if}}
 </li>

@@ -1,6 +1,7 @@
 <h1>Eatta Burger!</h1>
-
-<ul>
+{{!-- wrap the ul in divs  --}}
+<div class="d-f">
+<ul class="lis-n">
   {{#each burgers}}
     {{#unless devoured}}
       {{> burgers/burger-block devour=true}}
@@ -12,16 +13,14 @@
 {{!-- showing the burgers already devoured --}}
 <ul>
   {{#each burgers}}
-    {{#if sleepy}}
+    {{#if devoured}}
       {{> burgers/burger-block devour=false}}
     {{/if}}
   {{/each}}
 </ul>
+</div>
 
-<h2>Adda burger</h2>
-
-//need a form action and method
-//form action should be the index, and the method should be post
+<h2>Adda burga</h2>
 
 <form class="create-form">
 
@@ -29,8 +28,6 @@
     <label for="ca">Burger Name:</label>
     <input type="text" id="ca" name="name">
   </div>
-
-
 
   <button type="submit">Add burger</button>
 </form>
