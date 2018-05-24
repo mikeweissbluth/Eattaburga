@@ -3,7 +3,7 @@ var mysql = require("mysql");
 var connection = mysql.createConnection(process.env.JAWSDB_URL);
 
 
-
+// the below is to test locally in my computer's development environment
 // var connection = mysql.createConnection({
 //   host: "localhost",
 //   port: 3306,
@@ -12,7 +12,7 @@ var connection = mysql.createConnection(process.env.JAWSDB_URL);
 //   database: "burger_db"
 // });
 
-// Make connection.
+// Make connection. checking the connect to see if it works...
 connection.connect(function(err) {
   if (err) {
     console.error("error connecting: " + err.stack);
@@ -20,11 +20,11 @@ connection.connect(function(err) {
   }
   console.log("connected as id " + connection.threadId);
 });
-
-connection.query('CREATE TABLE burgers', function(err, rows, fields) {
+// creating a burgers table for the db
+connection.query('CREATE TABLE burgers (id int NOT NULL AUTO_INCREMENT,name varchar(255) NOT NULL,devoured BOOLEAN DEFAULT false,PRIMARY KEY (id));', function(err, rows, fields) {
   if (err) throw err;
 
-  console.log('The solution is: ', rows[0]);
+  console.log('Table created ');
 });
 
 // Export connection for our ORM to use.
