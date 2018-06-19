@@ -20,12 +20,20 @@ connection.connect(function(err) {
   }
   console.log("connected as id " + connection.threadId);
 });
-// creating a burgers table for the db
-connection.query('CREATE TABLE burgers (id int NOT NULL AUTO_INCREMENT,name varchar(255) NOT NULL,devoured BOOLEAN DEFAULT false,PRIMARY KEY (id));', function(err, rows, fields) {
-  if (err) throw err;
+//Determine if table already exists
+connection.query("SHOW TABLES LIKE 'burgers';",
+function(err, rows, fields) {
+  if (err) {
+    connection.query('CREATE TABLE burgers (id int NOT NULL AUTO_INCREMENT,name varchar(255) NOT NULL,devoured BOOLEAN DEFAULT false,PRIMARY KEY (id));', function(err, rows, fields) {
+      if (err) throw err;
+    
+      console.log('Table created ');
+    });    
+  };
 
-  console.log('Table created ');
+  console.log('burger table exists ');
 });
+
 
 // Export connection for our ORM to use.
 module.exports = connection;
